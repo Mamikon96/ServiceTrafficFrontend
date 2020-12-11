@@ -8,5 +8,5 @@ export interface Client {
     connectionDate: Date;
     paymentDate: Date;
     discount: number;
-    services: Service[];
+    services?: Service[];
 }

@@ -3,9 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  backend: "http://localhost:8080",
-  backendApi: "http://localhost:8080/api"
+    production: false,
+    backend: "http://localhost:8080",
+    backendApi: "http://localhost:8080/api",
+    servicesEndpoint: "/services",
+    ratesEndpoint: "/rates",
+    trafficsEndpoint: "/traffics",
+    consumptionsEndpoint: "/consumptions",
+    customersEndpoint: "/clients"
 };
 
 /*

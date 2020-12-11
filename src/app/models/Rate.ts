@@ -5,5 +5,5 @@ export interface Rate {
     rateName: string;
     price: number;
     expirationDate: Date;
-    traffics: Traffic[];
+    traffics?: Traffic[];
 }
