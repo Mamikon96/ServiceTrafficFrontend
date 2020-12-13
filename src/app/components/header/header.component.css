@@ -1,0 +1,40 @@
+.example-icon {
+  padding: 0 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-tab-group {
+  margin-bottom: 48px;
+}
+
+/*:host ::ng-deep .mat-tab-label-active {*/
+/*  border-width: 0 0 5px 0;*/
+/*  border-style: solid;*/
+/*  border-color: gold;*/
+/*}*/
+
+/*.mat-tab {*/
+/*  border-width: 0 0 5px 0;*/
+/*  border-style: solid;*/
+/*  border-color: gold;*/
+/*}*/
+
+.mat-tab-label {
+  min-width: 25px !important;
+  padding: 5px;
+  background-color: transparent;
+  color: white;
+  font-weight: 500;
+}
+
+.mat-tab-label.mat-tab-label-active {
+  min-width: 25px !important;
+  padding: 5px;
+  background-color: transparent;
+  color: white;
+  font-weight: 500;
+}
+

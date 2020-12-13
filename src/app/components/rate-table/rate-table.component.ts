@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {Subscription} from "rxjs";
 import {RatesService} from "../../services/rates.service";
 import {Rate} from "../../models/Rate";
+import {MatPaginator} from "@angular/material/paginator";
+import {MatSort} from "@angular/material/sort";
 
 @Component({
   selector: 'rate-table',
   templateUrl: './rate-table.component.html',
   styleUrls: ['./rate-table.component.css']
 })
-export class RateTableComponent implements OnInit {
+export class RateTableComponent implements OnInit, AfterViewInit {
+
+    @ViewChild(MatPaginator)
+    paginator: MatPaginator;
+    @ViewChild(MatSort)
+    sort: MatSort;
 
     displayedColumns: string[] = ['position', 'name', 'price', 'expirationDate'];
     dataSource: MatTableDataSource<RateElement>;
@@ -22,21 +29,27 @@ export class RateTableComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.dataSource = new MatTableDataSource<RateElement>();
+      console.log("init rates");
+      this.dataSource = new MatTableDataSource<RateElement>();
         this.rateElements = [];
 
         this.getDataSubscription = this.ratesService.getRates()
         .subscribe((data: Rate[]) => {
             for (let i = 0; i < data.length; i++) {
                 this.rateElements.push({
-                    position: i,
+                    position: i + 1,
                     name: data[i].rateName,
-                    price: data[i].price,
+                    price: data[i].price + '$',
                     expirationDate: data[i].expirationDate
                 });
             }
             this.updateTable(this.rateElements);
         });
+    }
+
+    ngAfterViewInit(): void {
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
     }
 
     ngOnDestroy(): void {
@@ -54,6 +67,6 @@ export class RateTableComponent implements OnInit {
 export interface RateElement {
     position: number;
     name: string;
-    price: number;
+    price: string;
     expirationDate: Date
 }

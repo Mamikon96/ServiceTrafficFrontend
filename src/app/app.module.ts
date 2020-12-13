@@ -13,6 +13,10 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { ServiceTableComponent } from './components/service-table/service-table.component';
 import { RateTableComponent } from './components/rate-table/rate-table.component';
 import { TrafficTableComponent } from './components/traffic-table/traffic-table.component';
+import { ConsumptionTableComponent } from './components/consumption-table/consumption-table.component';
+import { CustomerTableComponent } from './components/customer-table/customer-table.component';
+import { ContentComponent } from './components/content/content.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,11 @@ import { TrafficTableComponent } from './components/traffic-table/traffic-table.
     TableComponent,
     ServiceTableComponent,
     RateTableComponent,
-    TrafficTableComponent
+    TrafficTableComponent,
+    ConsumptionTableComponent,
+    CustomerTableComponent,
+    ContentComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
