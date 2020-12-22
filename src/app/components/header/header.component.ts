@@ -56,7 +56,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private changeTableData(): void {
         switch (this.dataType) {
             case "service":
-                this.getDataSub = this.servicesService.getServices()
+                /*this.getDataSub = this.servicesService.getServices()
                 .subscribe((data: Service[]) => {
                     let tempTableElements = [];
                     for (let i = 0; i < data.length; i++) {
@@ -67,7 +67,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
                     }
                     this.tableElements = null;
                     this.tableElements = [...tempTableElements];
-                });
+                });*/
                 break;
         }
     }

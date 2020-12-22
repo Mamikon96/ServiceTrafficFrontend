@@ -17,6 +17,14 @@ import { ConsumptionTableComponent } from './components/consumption-table/consum
 import { CustomerTableComponent } from './components/customer-table/customer-table.component';
 import { ContentComponent } from './components/content/content.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ProgressSpinnerModule } from "./modules/progress-spinner/progress-spinner.module";
+import { ServiceDialogComponent } from './forms/service-dialog/service-dialog.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import { RateDialogComponent } from './forms/rate-dialog/rate-dialog.component';
+import { TrafficDialogComponent } from './forms/traffic-dialog/traffic-dialog.component';
+import { ConsumptionDialogComponent } from './forms/consumption-dialog/consumption-dialog.component';
+import { CustomerDialogComponent } from './forms/customer-dialog/customer-dialog.component';
+import {DatePipe} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -31,16 +39,23 @@ import { FooterComponent } from './components/footer/footer.component';
     ConsumptionTableComponent,
     CustomerTableComponent,
     ContentComponent,
-    FooterComponent
+    FooterComponent,
+    ServiceDialogComponent,
+    RateDialogComponent,
+    TrafficDialogComponent,
+    ConsumptionDialogComponent,
+    CustomerDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    ProgressSpinnerModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

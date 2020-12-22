@@ -3,7 +3,7 @@ import {Client} from "./Client";
 import {Service} from "./Service";
 
 export interface Consumption {
-    consumptionId: ConsumptionId;
+    consumptionId?: ConsumptionId;
     consumptionTraffic: number;
     client?: Client;
     service?: Service;

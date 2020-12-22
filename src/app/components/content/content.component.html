@@ -7,22 +7,29 @@
         <ng-template matTabContent>
 <!--            <mat-card *ngIf="_isLoaded; else loading">-->
             <mat-card>
-                <mat-card-header>
-                    <div class="example-button-row">
-                        <button mat-raised-button color="primary">New</button>
-                        <button mat-raised-button color="primary">Edit</button>
-                        <button mat-raised-button color="primary">Delete</button>
-                    </div>
-                </mat-card-header>
 
-                <mat-card-content>
-                    <service-table *ngIf="dataType==='service'"></service-table>
-                    <rate-table *ngIf="dataType==='rate'"></rate-table>
-                    <traffic-table *ngIf="dataType==='traffic'"></traffic-table>
-                    <consumption-table *ngIf="dataType==='consumption'"></consumption-table>
-                    <customer-table *ngIf="dataType==='customer'"></customer-table>
+
+                    <service-table *ngIf="dataType==='service'"
+                                   (isLoadedEmitter)="switchSpinner()"
+                                   (selectedItemsEmitter)="updateButtonsStates($event)"
+                    ></service-table>
+                    <rate-table *ngIf="dataType==='rate'"
+                                (isLoaded)="switchSpinner()"
+                                (selectedItemsEmitter)="updateButtonsStates($event)"
+                    ></rate-table>
+                    <traffic-table *ngIf="dataType==='traffic'"
+                                   (isLoaded)="switchSpinner()"
+                                   (selectedItemsEmitter)="updateButtonsStates($event)"
+                    ></traffic-table>
+                    <consumption-table *ngIf="dataType==='consumption'"
+                                       (isLoaded)="switchSpinner()"
+                                       (selectedItemsEmitter)="updateButtonsStates($event)"
+                    ></consumption-table>
+                    <customer-table *ngIf="dataType==='customer'"
+                                    (isLoaded)="switchSpinner()"
+                                    (selectedItemsEmitter)="updateButtonsStates($event)"
+                    ></customer-table>
 <!--                    <mat-spinner class="spinner"></mat-spinner>-->
-                </mat-card-content>
             </mat-card>
         </ng-template>
     </mat-tab>
@@ -31,5 +38,14 @@
 <ng-template #loading>
     <mat-spinner class="spinner"></mat-spinner>
 </ng-template>
+
+<!--<web-progress-spinner class="example-margin"
+                      [color]="'primary'"
+                      [mode]="'indeterminate'"
+                      [value]="500"
+                      [backdropEnabled]="true"
+                      [positionGloballyCenter]="true"
+                      [displayProgressSpinner]="_isLoaded">
+</web-progress-spinner>-->
 
 <!--<div class="container"></div>-->

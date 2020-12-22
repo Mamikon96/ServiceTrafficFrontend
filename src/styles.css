@@ -22,7 +22,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .mat-tab-body {
-    margin: 60px 30px;
+    margin: 30px 30px;
     /*width: 85%;*/
     /*height: 200px;*/
     background-color: #ffffff;
@@ -95,4 +95,17 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .mat-header-cell {
     font-size: 16px;
+}
+
+.mat-form-field {
+    margin-left: 30px;
+}
+
+.error-message {
+    margin-left: 30px !important;
+    color: red;
+}
+
+.mat-dialog-actions {
+    justify-content: center;
 }

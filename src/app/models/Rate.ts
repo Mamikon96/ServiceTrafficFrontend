@@ -1,7 +1,7 @@
 import {Traffic} from "./Traffic";
 
 export interface Rate {
-    rateId: number;
+    rateId?: number;
     rateName: string;
     price: number;
     expirationDate: Date;
