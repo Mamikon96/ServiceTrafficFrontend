@@ -4,6 +4,7 @@ import {MatTabChangeEvent} from "@angular/material/tabs";
 import {ServicesService} from "../../services/services.service";
 import {Subscription} from "rxjs";
 import {Service} from "../../models/Service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'web-header',
@@ -32,7 +33,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
         'Customers'
     ];
 
-    constructor(private servicesService: ServicesService) { }
+    constructor(private servicesService: ServicesService,
+                private router: Router) { }
 
     ngOnInit(): void {
         this.dataType = DATA_TYPE[0];
@@ -70,6 +72,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
                 });*/
                 break;
         }
+    }
+
+    public logout(): void {
+        sessionStorage.setItem('token', '');
+        this.router.navigate(['/login']);
     }
 
 }

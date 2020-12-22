@@ -17,6 +17,7 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatOptionModule} from "@angular/material/core";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatMomentDateModule} from "@angular/material-moment-adapter";
+import {MatMenuModule, MatMenuTrigger} from "@angular/material/menu";
 
 
 
@@ -40,7 +41,8 @@ import {MatMomentDateModule} from "@angular/material-moment-adapter";
         MatSelectModule,
         MatOptionModule,
         MatDatepickerModule,
-        MatMomentDateModule
+        MatMomentDateModule,
+        MatMenuModule
     ],
     exports: [
         MatTableModule,
@@ -59,7 +61,8 @@ import {MatMomentDateModule} from "@angular/material-moment-adapter";
         MatSelectModule,
         MatOptionModule,
         MatDatepickerModule,
-        MatMomentDateModule
+        MatMomentDateModule,
+        MatMenuModule
     ]
 })
 export class MaterialModule { }
