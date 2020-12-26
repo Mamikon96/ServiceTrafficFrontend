@@ -1,17 +1,7 @@
-import {
-  AfterViewInit,
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  SimpleChanges,
-  ViewChild
-} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {ServiceElement} from "../../app.component";
-import {Observable, Subscription, forkJoin} from "rxjs";
+import {forkJoin, Observable, Subscription} from "rxjs";
 import {ServicesService} from "../../services/services.service";
 import {Service} from "../../models/Service";
 import {MatPaginator} from "@angular/material/paginator";
@@ -29,8 +19,6 @@ export class ServiceTableComponent implements OnInit, AfterViewInit {
 
     @Output()
     isLoadedEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
-    @Output()
-    selectedItemsEmitter: EventEmitter<number> = new EventEmitter<number>();
 
     @ViewChild(MatPaginator)
     paginator: MatPaginator;
@@ -93,13 +81,11 @@ export class ServiceTableComponent implements OnInit, AfterViewInit {
         this.isAllSelected() ?
             this.selection.clear() :
             this.dataSource.data.forEach(row => this.selection.select(row));
-        // this.selectedItemsEmitter.emit(this.selection.selected.length);
         this.updateButtonsStates(this.selection.selected.length);
     }
 
     toggle(row: ServiceElement): void {
         this.selection.toggle(row);
-        // this.selectedItemsEmitter.emit(this.selection.selected.length);
       this.updateButtonsStates(this.selection.selected.length);
     }
 

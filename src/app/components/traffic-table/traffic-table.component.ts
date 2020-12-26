@@ -6,9 +6,7 @@ import {Traffic} from "../../models/Traffic";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {SelectionModel} from "@angular/cdk/collections";
-import {ServiceElement} from "../../app.component";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import {ServiceDialogComponent} from "../../forms/service-dialog/service-dialog.component";
 import {TrafficId} from "../../models/TrafficId";
 import {TrafficDialogComponent} from "../../forms/traffic-dialog/traffic-dialog.component";
 
@@ -21,8 +19,6 @@ export class TrafficTableComponent implements OnInit, AfterViewInit {
 
     @Output()
     isLoaded: EventEmitter<boolean> = new EventEmitter<boolean>();
-    @Output()
-    selectedItemsEmitter: EventEmitter<number> = new EventEmitter<number>();
 
     @ViewChild(MatPaginator)
     paginator: MatPaginator;

@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Observable} from "rxjs";
 import {Router} from "@angular/router";
 
 @Component({
@@ -9,8 +8,6 @@ import {Router} from "@angular/router";
     styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-    private username: string;
 
     constructor(private http: HttpClient,
                 private router: Router,) {

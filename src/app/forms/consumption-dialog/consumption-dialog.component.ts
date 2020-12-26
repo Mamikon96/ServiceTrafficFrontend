@@ -1,12 +1,8 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
-import {Traffic} from "../../models/Traffic";
-import {Rate} from "../../models/Rate";
 import {Service} from "../../models/Service";
 import {Subscription} from "rxjs";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {TrafficsService} from "../../services/traffics.service";
-import {RatesService} from "../../services/rates.service";
 import {ServicesService} from "../../services/services.service";
 import {CustomersService} from "../../services/customers.service";
 import {ConsumptionsService} from "../../services/consumptions.service";
@@ -14,11 +10,11 @@ import {Consumption} from "../../models/Consumption";
 import {Client} from "../../models/Client";
 
 @Component({
-  selector: 'app-consumption-dialog',
-  templateUrl: './consumption-dialog.component.html',
-  styleUrls: ['./consumption-dialog.component.css']
+    selector: 'app-consumption-dialog',
+    templateUrl: './consumption-dialog.component.html',
+    styleUrls: ['./consumption-dialog.component.css']
 })
-export class ConsumptionDialogComponent implements OnInit {
+export class ConsumptionDialogComponent implements OnInit, OnDestroy {
 
     form: FormGroup;
     consumption: Consumption;
@@ -39,7 +35,7 @@ export class ConsumptionDialogComponent implements OnInit {
                 private customersService: CustomersService,
                 private servicesService: ServicesService,
                 @Inject(MAT_DIALOG_DATA) data) {
-      this.data = data;
+        this.data = data;
     }
 
     ngOnInit(): void {
@@ -53,6 +49,11 @@ export class ConsumptionDialogComponent implements OnInit {
         } else {
             this.form = this.generateEditForm();
         }
+    }
+
+    ngOnDestroy(): void {
+        this.customersSub && this.customersSub.unsubscribe();
+        this.servicesSub && this.servicesSub.unsubscribe();
     }
 
     save() {
@@ -116,7 +117,7 @@ export class ConsumptionDialogComponent implements OnInit {
             }),
             serviceName: new FormControl({
                 value: this.data.consumption.service.serviceName,
-                disabled:true
+                disabled: true
             }),
             consumptionTraffic: [this.data.consumption.consumptionTraffic]
         });

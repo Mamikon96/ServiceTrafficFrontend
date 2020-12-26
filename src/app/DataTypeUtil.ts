@@ -20,7 +20,3 @@ export const DATA_TYPE_COLUMNS: DynamicArrayMap = {
     "rate": ['position', 'rateName']
 };
 
-
-/*export function getTableColumnsForDataType(dataType: DataType): string[] {
-    return [];
-}*/

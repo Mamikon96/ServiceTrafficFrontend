@@ -6,10 +6,7 @@ import {Consumption} from "../../models/Consumption";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {SelectionModel} from "@angular/cdk/collections";
-import {ServiceElement} from "../../app.component";
-import {Service} from "../../models/Service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import {ServiceDialogComponent} from "../../forms/service-dialog/service-dialog.component";
 import {ConsumptionDialogComponent} from "../../forms/consumption-dialog/consumption-dialog.component";
 import {ConsumptionId} from "../../models/ConsumptionId";
 
@@ -22,8 +19,6 @@ export class ConsumptionTableComponent implements OnInit, AfterViewInit {
 
     @Output()
     isLoaded: EventEmitter<boolean> = new EventEmitter<boolean>();
-    @Output()
-    selectedItemsEmitter: EventEmitter<number> = new EventEmitter<number>();
 
     @ViewChild(MatPaginator)
     paginator: MatPaginator;

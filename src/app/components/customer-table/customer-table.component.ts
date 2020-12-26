@@ -6,10 +6,7 @@ import {Client} from "../../models/Client";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {SelectionModel} from "@angular/cdk/collections";
-import {ServiceElement} from "../../app.component";
-import {Service} from "../../models/Service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import {ServiceDialogComponent} from "../../forms/service-dialog/service-dialog.component";
 import {CustomerDialogComponent} from "../../forms/customer-dialog/customer-dialog.component";
 
 @Component({
@@ -21,8 +18,6 @@ export class CustomerTableComponent implements OnInit, AfterViewInit {
 
     @Output()
     isLoaded: EventEmitter<boolean> = new EventEmitter<boolean>();
-    @Output()
-    selectedItemsEmitter: EventEmitter<number> = new EventEmitter<number>();
 
     @ViewChild(MatPaginator)
     paginator: MatPaginator;

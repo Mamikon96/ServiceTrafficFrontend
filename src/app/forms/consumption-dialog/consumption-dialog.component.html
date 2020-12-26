@@ -3,32 +3,32 @@
 <mat-dialog-content [formGroup]="form">
     <mat-form-field>
         <input *ngIf="data.action=='edit'"
-                matInput
-                placeholder="Customer Name"
-                formControlName="customerName">
+               matInput
+               placeholder="Customer Name"
+               formControlName="customerName">
         <mat-label *ngIf="data.action=='add'">Choose an customer</mat-label>
         <mat-select *ngIf="data.action=='add'"
                     formControlName="customerName">
             <mat-option *ngFor="let item of _customers; let i = index"
-                      value="{{i}}">{{item.clientName}}</mat-option>
+                        value="{{i}}">{{item.clientName}}</mat-option>
         </mat-select>
     </mat-form-field>
     <mat-form-field>
         <input *ngIf="data.action=='edit'"
-                matInput
-                placeholder="Service Name"
-                formControlName="serviceName">
-      <mat-label *ngIf="data.action=='add'">Choose an service</mat-label>
-      <mat-select *ngIf="data.action=='add'"
-                  formControlName="serviceName">
-        <mat-option *ngFor="let item of _services; let i = index"
-                    value="{{i}}">{{item.serviceName}}</mat-option>
-      </mat-select>
+               matInput
+               placeholder="Service Name"
+               formControlName="serviceName">
+        <mat-label *ngIf="data.action=='add'">Choose an service</mat-label>
+        <mat-select *ngIf="data.action=='add'"
+                    formControlName="serviceName">
+            <mat-option *ngFor="let item of _services; let i = index"
+                        value="{{i}}">{{item.serviceName}}</mat-option>
+        </mat-select>
     </mat-form-field>
     <mat-form-field>
-      <input matInput
-             placeholder="Consumption Traffic (MB)"
-             formControlName="consumptionTraffic">
+        <input matInput
+               placeholder="Consumption Traffic (MB)"
+               formControlName="consumptionTraffic">
     </mat-form-field>
 
     <p class="error-message" *ngIf="_showError">Data is not added!</p>

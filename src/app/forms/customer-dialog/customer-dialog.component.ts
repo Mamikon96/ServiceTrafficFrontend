@@ -1,8 +1,6 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
-import {Service} from "../../models/Service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {ServicesService} from "../../services/services.service";
 import {Client} from "../../models/Client";
 import {Rate} from "../../models/Rate";
 import {RatesService} from "../../services/rates.service";
@@ -10,11 +8,11 @@ import {Subscription} from "rxjs";
 import {CustomersService} from "../../services/customers.service";
 
 @Component({
-  selector: 'app-customer-dialog',
-  templateUrl: './customer-dialog.component.html',
-  styleUrls: ['./customer-dialog.component.css']
+    selector: 'app-customer-dialog',
+    templateUrl: './customer-dialog.component.html',
+    styleUrls: ['./customer-dialog.component.css']
 })
-export class CustomerDialogComponent implements OnInit {
+export class CustomerDialogComponent implements OnInit, OnDestroy {
 
     form: FormGroup;
     customer: Client;
@@ -46,6 +44,10 @@ export class CustomerDialogComponent implements OnInit {
             this.form = this.generateEditForm();
             this.form.get('rateName').setValue(this.data.customer.rate.rateName);
         }
+    }
+
+    ngOnDestroy(): void {
+        this.ratesSub && this.ratesSub.unsubscribe();
     }
 
     save() {
@@ -94,7 +96,7 @@ export class CustomerDialogComponent implements OnInit {
     }
 
     private generateEditForm(): FormGroup {
-        return  this.fb.group({
+        return this.fb.group({
             customerName: [this.data.customer.clientName, []],
             rateName: [this.data.customer.rate.rateName, []],
             connectionDate: new FormControl({
@@ -111,6 +113,6 @@ export class CustomerDialogComponent implements OnInit {
         .subscribe((data: Rate[]) => {
             this._rates = [...data];
         });
-      }
+    }
 
 }

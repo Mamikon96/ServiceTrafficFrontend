@@ -11,23 +11,18 @@
 
                     <service-table *ngIf="dataType==='service'"
                                    (isLoadedEmitter)="switchSpinner()"
-                                   (selectedItemsEmitter)="updateButtonsStates($event)"
                     ></service-table>
                     <rate-table *ngIf="dataType==='rate'"
                                 (isLoaded)="switchSpinner()"
-                                (selectedItemsEmitter)="updateButtonsStates($event)"
                     ></rate-table>
                     <traffic-table *ngIf="dataType==='traffic'"
                                    (isLoaded)="switchSpinner()"
-                                   (selectedItemsEmitter)="updateButtonsStates($event)"
                     ></traffic-table>
                     <consumption-table *ngIf="dataType==='consumption'"
                                        (isLoaded)="switchSpinner()"
-                                       (selectedItemsEmitter)="updateButtonsStates($event)"
                     ></consumption-table>
                     <customer-table *ngIf="dataType==='customer'"
                                     (isLoaded)="switchSpinner()"
-                                    (selectedItemsEmitter)="updateButtonsStates($event)"
                     ></customer-table>
 <!--                    <mat-spinner class="spinner"></mat-spinner>-->
             </mat-card>

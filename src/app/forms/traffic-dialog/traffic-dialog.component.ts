@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {Traffic} from "../../models/Traffic";
@@ -15,7 +15,7 @@ import {ServicesService} from "../../services/services.service";
   templateUrl: './traffic-dialog.component.html',
   styleUrls: ['./traffic-dialog.component.css']
 })
-export class TrafficDialogComponent implements OnInit {
+export class TrafficDialogComponent implements OnInit, OnDestroy {
 
     form: FormGroup;
     traffic: Traffic;
@@ -51,6 +51,11 @@ export class TrafficDialogComponent implements OnInit {
         } else {
             this.form = this.generateEditForm();
         }
+    }
+
+    ngOnDestroy(): void {
+        this.ratesSub && this.ratesSub.unsubscribe();
+        this.servicesSub && this.servicesSub.unsubscribe();
     }
 
     save() {
