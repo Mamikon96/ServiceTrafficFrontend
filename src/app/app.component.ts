@@ -34,7 +34,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.dataSource = new MatTableDataSource<ServiceElement>();
         this.serviceElements = [];
 
-        this.getServicesSub = this.servicesService.getServices()
+        /*this.getServicesSub = this.servicesService.getServices()
         .subscribe((data: Service[]) => {
             this.rowCount = data.length;
             this.services = data;
@@ -47,7 +47,7 @@ export class AppComponent implements OnInit, OnDestroy {
             }
 
             this.updateTable(this.serviceElements);
-        });
+        });*/
     }
 
     ngOnDestroy(): void {

@@ -1,0 +1,58 @@
+<h2 mat-dialog-title>{{title}}</h2>
+
+<mat-dialog-content [formGroup]="form">
+    <!--  Customer Name-->
+    <mat-form-field>
+        <input matInput
+               placeholder="Customer Name"
+               formControlName="customerName">
+    </mat-form-field>
+
+    <!--  Rate Name-->
+    <mat-form-field>
+        <mat-label>Choose an rate</mat-label>
+        <mat-select
+            formControlName="rateName">
+            <mat-option *ngFor="let item of _rates; let i = index"
+                        value="{{i}}">{{item.rateName}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <!--  Connection Date-->
+    <mat-form-field>
+        <mat-label>Choose Connection Date</mat-label>
+        <input matInput [matDatepicker]="picker1" formControlName="connectionDate">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+
+    <!--  Payment Date-->
+    <mat-form-field>
+        <mat-label>Choose Payment Date</mat-label>
+        <input matInput [matDatepicker]="picker2" formControlName="paymentDate">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+
+    <!--  Discount-->
+    <mat-form-field>
+        <input matInput
+               placeholder="Discount"
+               formControlName="discount">
+    </mat-form-field>
+
+    <p class="error-message" *ngIf="_showError">Data is not added!</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button *ngIf="data.action === 'add'"
+            mat-raised-button
+            color="primary"
+            (click)="save()">Create
+    </button>
+    <button *ngIf="data.action === 'edit'"
+            mat-raised-button
+            color="primary"
+            (click)="update()">Update
+    </button>
+    <button mat-raised-button color="accent" (click)="close()">Cancel</button>
+</mat-dialog-actions>

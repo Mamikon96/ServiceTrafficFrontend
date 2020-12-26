@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>{{title}}</h2>
+
+<mat-dialog-content [formGroup]="form">
+    <mat-form-field>
+        <input matInput
+              placeholder="Service Name"
+              formControlName="serviceName">
+    </mat-form-field>
+
+    <p class="error-message" *ngIf="_showError">Data is not added!</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button *ngIf="data.action === 'add'"
+          mat-raised-button
+          color="primary"
+          (click)="save()">Create
+  </button>
+  <button *ngIf="data.action === 'edit'"
+          mat-raised-button
+          color="primary"
+          (click)="update()">Update
+  </button>
+  <button mat-raised-button color="accent" (click)="close()">Cancel</button>
+</mat-dialog-actions>

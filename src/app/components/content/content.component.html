@@ -1,0 +1,46 @@
+<mat-tab-group color="primary"
+               backgroundColor="primary"
+               (selectedTabChange)="handleTabClick($event)">
+    <mat-tab *ngFor="let tabTitle of _tabsTitles"
+              class="tabs"
+              [label]="tabTitle">
+        <ng-template matTabContent>
+<!--            <mat-card *ngIf="_isLoaded; else loading">-->
+            <mat-card>
+
+
+                    <service-table *ngIf="dataType==='service'"
+                                   (isLoadedEmitter)="switchSpinner()"
+                    ></service-table>
+                    <rate-table *ngIf="dataType==='rate'"
+                                (isLoaded)="switchSpinner()"
+                    ></rate-table>
+                    <traffic-table *ngIf="dataType==='traffic'"
+                                   (isLoaded)="switchSpinner()"
+                    ></traffic-table>
+                    <consumption-table *ngIf="dataType==='consumption'"
+                                       (isLoaded)="switchSpinner()"
+                    ></consumption-table>
+                    <customer-table *ngIf="dataType==='customer'"
+                                    (isLoaded)="switchSpinner()"
+                    ></customer-table>
+<!--                    <mat-spinner class="spinner"></mat-spinner>-->
+            </mat-card>
+        </ng-template>
+    </mat-tab>
+</mat-tab-group>
+
+<ng-template #loading>
+    <mat-spinner class="spinner"></mat-spinner>
+</ng-template>
+
+<!--<web-progress-spinner class="example-margin"
+                      [color]="'primary'"
+                      [mode]="'indeterminate'"
+                      [value]="500"
+                      [backdropEnabled]="true"
+                      [positionGloballyCenter]="true"
+                      [displayProgressSpinner]="_isLoaded">
+</web-progress-spinner>-->
+
+<!--<div class="container"></div>-->

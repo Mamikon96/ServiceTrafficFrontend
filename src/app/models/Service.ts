@@ -1,7 +1,7 @@
 import {Traffic} from "./Traffic";
 
 export interface Service {
-    serviceId: number;
+    serviceId?: number;
     serviceName: string;
-    traffics: Traffic[];
+    traffics?: Traffic[];
 }
